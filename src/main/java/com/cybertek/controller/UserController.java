@@ -1,6 +1,5 @@
 package com.cybertek.controller;
 
-import com.cybertek.dto.RoleDTO;
 import com.cybertek.dto.UserDTO;
 import com.cybertek.exception.TicketingProjectException;
 import com.cybertek.service.RoleService;

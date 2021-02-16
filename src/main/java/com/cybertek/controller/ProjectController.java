@@ -1,14 +1,8 @@
 package com.cybertek.controller;
 
-import com.cybertek.converter.UserDtoConverter;
 import com.cybertek.dto.ProjectDTO;
-import com.cybertek.dto.TaskDTO;
-import com.cybertek.dto.UserDTO;
-import com.cybertek.enums.Status;
 import com.cybertek.service.ProjectService;
 import com.cybertek.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/project")

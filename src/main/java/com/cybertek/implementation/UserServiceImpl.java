@@ -6,12 +6,10 @@ import com.cybertek.dto.UserDTO;
 import com.cybertek.entity.User;
 import com.cybertek.exception.TicketingProjectException;
 import com.cybertek.mapper.MapperUtil;
-import com.cybertek.mapper.UserMapper;
 import com.cybertek.repository.UserRepository;
 import com.cybertek.service.ProjectService;
 import com.cybertek.service.TaskService;
 import com.cybertek.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -68,9 +66,9 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByUserName(dto.getUserName());
         //Map update user dto to entity object
         User convertedUser = mapperUtil.convert(dto,new User());
-
         convertedUser.setPassWord(passwordEncoder.encode(convertedUser.getPassWord()));
         convertedUser.setEnabled(true);
+
         //set id to the converted object
         convertedUser.setId(user.getId());
         //save updated user
