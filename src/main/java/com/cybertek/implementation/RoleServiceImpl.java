@@ -5,6 +5,7 @@ import com.cybertek.entity.Role;
 import com.cybertek.mapper.RoleMapper;
 import com.cybertek.repository.RoleRepository;
 import com.cybertek.service.RoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

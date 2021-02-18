@@ -2,7 +2,9 @@ package com.cybertek.implementation;
 
 import com.cybertek.dto.UserDTO;
 import com.cybertek.entity.User;
+import com.cybertek.entity.common.UserPrincipal;
 import com.cybertek.mapper.MapperUtil;
+import com.cybertek.repository.UserRepository;
 import com.cybertek.service.SecurityService;
 import com.cybertek.service.UserService;
 import org.springframework.security.core.GrantedAuthority;

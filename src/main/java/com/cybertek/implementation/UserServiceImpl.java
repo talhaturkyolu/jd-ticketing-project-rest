@@ -6,10 +6,12 @@ import com.cybertek.dto.UserDTO;
 import com.cybertek.entity.User;
 import com.cybertek.exception.TicketingProjectException;
 import com.cybertek.mapper.MapperUtil;
+import com.cybertek.mapper.UserMapper;
 import com.cybertek.repository.UserRepository;
 import com.cybertek.service.ProjectService;
 import com.cybertek.service.TaskService;
 import com.cybertek.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -49,21 +51,32 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void save(UserDTO dto) {
+    public UserDTO save(UserDTO dto) throws TicketingProjectException {
 
         User foundUser = userRepository.findByUserName(dto.getUserName());
-        dto.setEnabled(true);
 
-       User obj =  mapperUtil.convert(dto,new User());
-       obj.setPassWord(passwordEncoder.encode(obj.getPassWord()));
-       userRepository.save(obj);
+        if(foundUser!=null){
+            throw new TicketingProjectException("User already exists");
+        }
+
+       User user =  mapperUtil.convert(dto,new User());
+       user.setPassWord(passwordEncoder.encode(user.getPassWord()));
+
+       User save = userRepository.save(user);
+
+       return mapperUtil.convert(save,new UserDTO());
+
     }
 
     @Override
-    public UserDTO update(UserDTO dto) {
+    public UserDTO update(UserDTO dto) throws TicketingProjectException {
 
         //Find current user
         User user = userRepository.findByUserName(dto.getUserName());
+
+        if(user == null){
+            throw new TicketingProjectException("User Does Not Exists");
+        }
         //Map update user dto to entity object
         User convertedUser = mapperUtil.convert(dto,new User());
         convertedUser.setPassWord(passwordEncoder.encode(convertedUser.getPassWord()));
@@ -121,5 +134,14 @@ public class UserServiceImpl implements UserService {
             default:
                 return true;
         }
+    }
+
+    @Override
+    public UserDTO confirm(User user) {
+
+        user.setEnabled(true);
+        User confirmedUser = userRepository.save(user);
+
+        return mapperUtil.convert(confirmedUser,new UserDTO());
     }
 }

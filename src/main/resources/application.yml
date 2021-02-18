@@ -1,3 +1,5 @@
+app:
+  local-url: http://localhost:${server.port}
 server:
   port: 8080
 spring:
@@ -19,10 +21,11 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: false
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    properties:
+ mail:
+  host: smtp.gmail.com
+  port: 587
+  properties:
+    mail:
       transport:
         protocol: smtp
       smtp:
@@ -33,8 +36,8 @@ spring:
         connectiontimeout: 5000
         timeout: 5000
         writetimeout: 5000
-    username: turkyolutalha@gmail.com
-    password: Tt545503.
+  username: turkyolutalha@gmail.com
+  password: turkyolutalha@2020
 security:
   jwt:
     secret-key: cybertek

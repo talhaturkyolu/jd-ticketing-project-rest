@@ -1,6 +1,8 @@
 package com.cybertek.mapper;
 
+import com.cybertek.dto.RoleDTO;
 import com.cybertek.dto.UserDTO;
+import com.cybertek.entity.Role;
 import com.cybertek.entity.User;
 import com.cybertek.repository.UserRepository;
 import org.modelmapper.ModelMapper;
