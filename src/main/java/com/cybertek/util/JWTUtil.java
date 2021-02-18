@@ -26,6 +26,7 @@ public class JWTUtil {
         claims.put("id",user.getId());
         claims.put("firstName",user.getFirstName());
         claims.put("lastName",user.getLastName());
+
         return createToken(claims,user.getUserName());
     }
 

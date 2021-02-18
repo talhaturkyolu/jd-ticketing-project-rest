@@ -100,44 +100,6 @@ public class UserController {
         return ResponseEntity.ok(new ResponseWrapper("Successfully read users by role",userList));
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private MailDTO createEmail(UserDTO userDTO){
 
         User user = mapperUtil.convert(userDTO,new User());
